@@ -1,0 +1,3 @@
+quit: quits
+help: prints this message
+dates [start] [end]: prints the start and end date entered

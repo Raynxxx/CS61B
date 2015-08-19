@@ -1,0 +1,79 @@
+Basic Storage Design Plan for Gitlet
+
+
+Overview
+-------
+
+
+
+
+Sequential Example
+-------
+
+For each of the commands below, describe in detail what files on your computer change after the command is executed. Only list changes made to files. Do not list details regarding the reading of files.
+
+$ java Gitlet init
+
+ . If it does not already exist, a new folder called .gitlet is created in the current directory.
+
+
+
+$ java Gitlet add dog.txt
+
+
+
+$ java Gitlet commit “initial commit of dog.txt”
+
+
+
+
+$ java Gitlet add dog.txt
+
+
+
+
+$ cp manyDogs.txt dog.txt
+$ java Gitlet add dog.txt
+
+
+
+
+$ java Gitlet commit “replaced dog.txt with manyDogs”
+
+
+
+
+$ java Gitlet add manyDogs.txt
+
+
+
+
+$ java Gitlet add ketchupFriend.txt
+
+
+
+$ java Gitlet commit “added manyDogs and ketchupFriend”
+
+
+
+
+$ java Gitlet commit YOLO
+
+
+
+$ cp doge.txt manyDogs.txt
+$ java Gitlet add manyDogs.txt
+
+
+
+$ java Gitlet commit “replaced manyDogs with doge”
+
+
+
+$ java Gitlet add dog.txt
+
+
+
+$ java Gitlet commit “added dog yet again”
+
+

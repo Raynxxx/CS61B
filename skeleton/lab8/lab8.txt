@@ -1,0 +1,89 @@
+1. Estimated running times (in big-theta notation):
+function1: Theta(____)
+function2: Theta(____)
+function3: Theta(____)
+
+Data:
+               n         time
+function1:
+
+
+
+
+function2:
+
+
+
+
+function3:
+
+
+
+
+Experimentally determined running time, assuming runtime is of the form ~aN^b:
+
+function1: ~__N^__
+function2: ~__N^__
+function3: ~__N^__
+
+2. Data:
+                              n             time
+function4:
+
+
+
+function5 (best case):
+
+
+
+function5 (worst case):
+
+
+
+
+3. Data:
+                              n         time
+ArrayList:
+
+
+
+
+HashSet:
+
+
+
+
+
+Experimentally determined running time:
+
+ArrayList:
+HashSet:
+
+4. Data:
+                                       n         time
+Insertion sort with array list:
+
+
+
+
+Insertion sort with linked list:
+
+
+
+
+
+Experimentally determined running time:
+
+Insertion sort with array:        O(___)
+Insertion sort with linked list:  O(___)
+
+5. Initial guess: O(___)
+
+Data:             n               time
+
+
+
+
+Experimentally determined running time: O(___)
+
+
