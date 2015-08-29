@@ -53,13 +53,16 @@ public class Sort {
 
     /** Prints A. */
     public static void print(String[] a) {
-
+        for (int i = 0; i < a.length; ++i) {
+            System.out.println(a[i]);
+        }
     }
 
     /** Prints args in sorted order.
      */
 
     public static void main(String[] args) {
-        
+        sort(args);
+        print(args);
     }
 } 

@@ -17,6 +17,11 @@ public class IntListOps {
       * each element incremented by x. Not allowed to use
       * the 'new' keyword. Solutions after lecture 4. */
     public static IntList dincrList(IntList L, int x) {
+        IntList p = L;
+        while (p != null) {
+            p.head += x;
+            p = p.tail;
+        }
         return L;
     }
 

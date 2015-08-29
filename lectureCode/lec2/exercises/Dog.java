@@ -5,7 +5,7 @@
 */
 
 public class Dog {
-    public static int size;
+    public int size;
 
     public Dog(int startSize) {
         size = startSize;
@@ -19,12 +19,14 @@ public class Dog {
             System.out.println("bark.");
         } else {
             System.out.println("woof woofity woof!");
+            double[] soundData = StdAudio.read("malamute.wav");
+            StdAudio.play(soundData);
         }
     } 
 
     /** Returns larger dog. */
     public static Dog maxDog(Dog d1, Dog d2) {
-        if (size > d2.size)
+        if (d1.size > d2.size)
             return d1;
         return d2;
     }

@@ -48,11 +48,12 @@ public class Sort {
 
     /** Prints A. */
     public static void print(String[] a) {
-        //
+        System.out.println(a);
     }
 
     /** Prints ARGS in sorted order. */
     public static void main(String[] args) {
-        
+        sort(args);
+        System.out.println(args);
     }
 } 
