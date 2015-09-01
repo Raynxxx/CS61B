@@ -1,0 +1,122 @@
+<h1>HW1: Java Basics</h1>
+<p>Recommended Start Date: Wednesday, January 21, 2015.</p>
+<p>Due Date: Wednesday, January 28, 2015.</p>
+<h2>Table of Contents</h2>
+<ul>
+<li>Introduction</li>
+<li>Reading in the Universe</li>
+<li>Understanding the Physics</li>
+<li>Understanding the Math</li>
+<li>Creating an Animation</li>
+<li>Adding Audio</li>
+<li>Requirements</li>
+<li>Resources</li>
+<li>Compiling and Running Your Program</li>
+<li>Submission</li>
+</ul>
+<h2>Introduction</h2>
+<p>Your goal is to write a program simulating the motion of <code>N</code> objects in a plane, accounting for the gravitational forces mutually affecting each object as demonstrated by Sir Issac Newton's <a href="http://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation">Law of Universal Graviation</a>. </p>
+<p>Specifically, you will be writing a program <code>NBody.java</code> that:</p>
+<ol>
+<li>Reads two <code>double</code> command-line arguments <code>T</code> and <code>dt</code>.</li>
+<li>Reads in the universe, stored in a text file, using <code>StdIn</code>, storing each object read in as an instance of a <code>Planet</code> class.</li>
+<li>Simulates the universe, starting from time <em>t = 0.0</em>, and continuing as long as <em>t &lt; T</em>, </li>
+<li>Animates the results using <code>StdDraw</code>.</li>
+<li>Prints the state of the universe at the end of the simulation (in the same format as the input file) using <code>StdOut</code>.</li>
+</ol>
+<h2>Reading in the Universe</h2>
+<p>The input format is a text file that contains the information for a particular universe (in SI units). The first value is an integer <code>N</code> which represents the number of particles. The second value is a real number <code>R</code> which represents the radius of the universe, used to determine the scaling of the drawing window. Finally, there are <code>N</code> rows, and each row contains 6 values. The first two values are the x- and y-coordinates of the initial position; the next pair of values are the x- and y-components of the initial velocity; the fifth value is the mass; the last value is a String that is the name of an image file used to display the particle. Image files can be found in the <code>images</code> directory. As an example, planets.txt contains data for our own solar system (up to Mars): </p>
+<pre><code>$ more planets.txt
+5
+2.50e+11
+ 1.4960e+11  0.0000e+00  0.0000e+00  2.9800e+04  5.9740e+24    earth.gif
+ 2.2790e+11  0.0000e+00  0.0000e+00  2.4100e+04  6.4190e+23     mars.gif
+ 5.7900e+10  0.0000e+00  0.0000e+00  4.7900e+04  3.3020e+23  mercury.gif
+ 0.0000e+00  0.0000e+00  0.0000e+00  0.0000e+00  1.9890e+30      sun.gif
+ 1.0820e+11  0.0000e+00  0.0000e+00  3.5000e+04  4.8690e+24    venus.gif
+</code></pre>
+<p>You should read in exactly as many rows of body information as are indicated by <code>N</code>, the first value in the file.</p>
+<h2>Understanding the Physics</h2>
+<ul>
+<li>
+<p>Pairwise Force: <em>Newton's law of universal gravitation</em> asserts that the strength of the gravitational force between two particles is given by the product of their masses divided by the square of the distance between them, scaled by the gravitational constant <em>G</em> (6.67 * 10<sup>-11</sup> N-m<sup>2</sup> / kg<sup>2</sup>). The pull of one particle towards another acts on the line between them. Since we are using Cartesian coordinates to represent the position of a particle, it is convenient to break up the force into its x- and y-components (F<sub>x</sub>, F<sub>y</sub>). The relevant equations:</p>
+<ul>
+<li>F = G * m<sub>1</sub> * m<sub>2</sub> / r<sup>2</sup></li>
+<li>r<sup>2</sup> = dx<sup>2</sup> + dy<sup>2</sup></li>
+<li>F<sub>y</sub> = F * dy / r</li>
+<li>F<sub>x</sub> = F * dx / r</li>
+</ul>
+</li>
+<li>
+<p>Net Force: The <em>principle of superposition</em> says that the net force acting on a particle in the x- or y-direction is the sum of the pairwise forces acting on the particle in that direction.</p>
+</li>
+<li>
+<p>Acceleration: Newton's <em>second law of motion</em> says that the accelerations in the x- and y-directions are given by:</p>
+<ul>
+<li>a<sub>x</sub> = F<sub>x</sub> / m</li>
+<li>a<sub>y</sub> = F<sub>y</sub> / m</li>
+</ul>
+</li>
+</ul>
+<h2>Understanding the Math</h2>
+<p>To create our simulation, we discretize time, and update the time variable <code>t</code> in increments of the time quantum <code>dt</code> (measured in seconds). We maintain the position (p<sub>x</sub>, p<sub>y</sub>) and velocity (v<sub>x</sub>, v<sub>y</sub>) of each particle at each time step. The steps below illustrate how to update the positions and velocities of the particles. </p>
+<ol>
+<li>For each particle: Calculate the net force (F<sub>x</sub>, F<sub>y</sub>) at the current time <code>t</code> acting on that particle using Newton's law of gravitation and the principle of superposition. Note that force is a vector (i.e., it has direction). In particular, be aware that dx and dy are signed (positive or negative). </li>
+<li>
+<p>For each particle: </p>
+<ol>
+<li>Calculate its acceleration (a<sub>x</sub>, a<sub>y</sub>) at time <code>t</code> using the net force computed in Step 1.</li>
+<li>Calculate its new velocity (v<sub>x</sub>, v<sub>y</sub>) at the next time step by using the acceleration computed in Step 2a and the velocity from the old time step: Assuming the acceleration remains constant in this interval, the new velocity is (v<sub>x</sub> + dt * a<sub>x</sub>, v<sub>y</sub> + dt * a<sub>y</sub>).</li>
+<li>Calculate its new position (p<sub>x</sub>, p<sub>y</sub>) at time t + dt by using the velocity computed in Step 2b and its old position at time <code>t</code>: Assuming the velocity remains constant in this interval, the new position is (p<sub>x</sub> + dt * v<sub>x</sub>, p<sub>y</sub> + dt * v<sub>y</sub>).</li>
+</ol>
+</li>
+<li>
+<p>For each particle: Draw the particle using the position computed in Step 2.</p>
+</li>
+</ol>
+<p>The simulation is more accurate when <code>dt</code> is very small, but this comes at the price of more computation.</p>
+<h2>Creating an Animation</h2>
+<p>Draw each particle at its current position using the <code>StdDraw</code> library, and repeat this process at each time step until a designated stopping time. By displaying this sequence of snapshots (or frames) in rapid succession, you will create the illusion of movement. After each time step:</p>
+<ol>
+<li>Draw the background image <code>starfield.jpg</code></li>
+<li>Redraw all the bodies in their new positions</li>
+<li>Control the animation speed (about 40 frames per second looks good). </li>
+</ol>
+<h2>Adding Audio</h2>
+<p>For a finishing touch, play the theme to <em>2001: A Space Odyssey</em> using <code>StdAudio</code> and the file <code>2001.mid</code>. Feel free to add your own audio files and create your own soundtrack!</p>
+<h2>Requirements</h2>
+<p>You must turn in two Java files: <code>NBody.java</code> and <code>Planet.java</code>. 
+Your <code>Planet</code> class must have the following things:</p>
+<ol>
+<li>a multi-argument constructor</li>
+<li>a method calculating and storing the net force acting on a planet</li>
+<li>a method calculating and storing the acceleration at time <code>t</code>, the new velocity at the next time step, and the new position time t + dt.
+You can have additional methods in your planet class as needed.</li>
+</ol>
+<h2>Resources</h2>
+<p>You might find the following resources useful:</p>
+<ul>
+<li><a href="http://introcs.cs.princeton.edu/java/stdlib/javadoc/">API for Princeton StdLib</a>.</li>
+</ul>
+<h2>Compiling and Running Your Program</h2>
+<p>To compile your program, type in your command line:</p>
+<blockquote>
+<p>javac NBody.java</p>
+</blockquote>
+<p>To execute your program, you will need to include two command line arguments and standard input. For example:</p>
+<blockquote>
+<p>java NBody 157788000.0 25000.0 &lt; data/planets.txt</p>
+</blockquote>
+<p>After the animation stops, your program should output the final state of the universe in the same format as the input, e.g.: </p>
+<pre><code>5
+2.50e11
+ 1.4925e+11 -1.0467e+10  2.0872e+03  2.9723e+04  5.9740e+24    earth.gif
+-1.1055e+11 -1.9868e+11  2.1060e+04 -1.1827e+04  6.4190e+23     mars.gif
+-1.1708e+10 -5.7384e+10  4.6276e+04 -9.9541e+03  3.3020e+23  mercury.gif
+ 2.1709e+05  3.0029e+07  4.5087e-02  5.1823e-02  1.9890e+30      sun.gif
+ 6.9283e+10  8.2658e+10 -2.6894e+04  2.2585e+04  4.8690e+24    venus.gif
+</code></pre>
+<p>Make sure to also try out some of the other simulations, which can all be found in the <code>data</code> directory.</p>
+<h2>Submission</h2>
+<h4>TODO</h4>
+<p><strong>Acknowledgements</strong>: This assignment was originally created by Robert Sedgewick and Kevin Wayne from Princeton University.</p>

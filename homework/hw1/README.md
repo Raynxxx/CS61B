@@ -1,5 +1,4 @@
-~ number: 1
-~ title: NBody Simulation (BETA)
+# Homework 1: NBody Simulation (BETA)
 
 Navigation
 -----------------

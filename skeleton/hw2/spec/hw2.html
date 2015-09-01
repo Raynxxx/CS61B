@@ -1,0 +1,153 @@
+<h1>Homework 2: Bit Operations, Pointers, Linked Lists</h1>
+<p>In this assignment, we will implement a basic calculator using bitwise operators.  This calculator will maintain a history of calculations which we can operate on as well.  You will find some skeleton code available to you, and you are free to add any additional methods and fields you think will be helpful.</p>
+<p><em>Note: It is advisable to read through the entire specification, esp. Task 6, so that you will have a proper overview of what we are doing in this homework assignment.  Trust us, this will save you time, pain, and confusion.</em></p>
+<h2>Task 1: Write JUnit Tests</h2>
+<p>Unfortunately, the staff procrastinated on creating this homework assignment and wrote the calculator code in a hurry!  In their rush, your TAs wrote a pretty buggy adder.</p>
+<p>Your task is to write a minimum of 3 JUnit tests to test the addition code in the staff calculator in the included CalculatorTest.java skeleton.  At least one of the tests must fail, i.e. catch a bug in the staff implementation of the adder.  This test should pass on a correct addition implementation.  Also, at least one of the tests must pass.</p>
+<p>For example:</p>
+<pre><code>1 + 3 -&gt; 4   // Valid test.  You'd expect any correct adder to compute this result.
+1 + 3 -&gt; 3   // Invalid test.  Even though it will fail on our code, it will fail on any correct adder.
+</code></pre>
+<p>The method signature for addition is:</p>
+<pre><code>public int add(int x, int y)
+</code></pre>
+<p>We highly encourage you to write tests for all of the methods in this assignment before you write the code.  You can use these tests to test your own implementation: to do so, read the comments in the setUp() method of CalculatorTest.java.</p>
+<h2>Task 2: Adding with Bit Operations</h2>
+<p>In this part of the assignment, you will implement the addition functionality of a calculator.  Write the add function, which takes in two integers and computes their sum.  You are not allowed to use any of the standard math operators, i.e. +, -, /, <em>, %, ++, --, +=, -=, </em>=, /=, %=, or any equivalent method calls.  Instead, use the bitwise operators &amp;, |, ^, ~, &lt;&lt;, &gt;&gt;, &gt;&gt;&gt;, etc.</p>
+<p>Hint: Try working out a small example with a truth table of the addition on paper first before translating it into code.</p>
+<p>Your function should be located in the Calculator class with the following method signature:</p>
+<pre><code>public int add(int x, int y) {
+    /** YOUR CODE HERE **/
+}
+</code></pre>
+<h2>Task 3: Multiplying with Bit Operations</h2>
+<p>Similar to the previous part, you will implement the multiplication functionality of a calculator.  Write the multiply function, which takes in two integers and computes their product.  As before, you may not use any of the standard math operators.  You are allowed to use the add() function you wrote in the previous part, and you should use at least one of the bitwise operators in a non-trivial manner.</p>
+<p>Your function should be located in the Calculator class with the following method signature:</p>
+<pre><code>public int multiply(int x, int y) {
+    /** YOUR CODE HERE **/
+}
+</code></pre>
+<p>Hint: Try to get multiplication to work where y is a power of 2 first.  Once you have that working, think about how you can get it to work with all integers.</p>
+<h2>Task 4: Managing Calculator History</h2>
+<p>Note: It is advisable to read the details under Task 6 to get a better picture of the calculator's functionality.</p>
+<p>An additional feature we will implement is the ability to store: (1) a history of equations that were run, and (2) their corresponding results.  You may assume that (1) will be an equation represented as a String, and (2) will be an integer corresponding to the result.</p>
+<p>The data structure we will use is the EquationList class you will find under the list directory.  This is similar to the linked list that was covered in lecture, and the diagram below shows an example of its use.  You are not allowed to use any of Java's built-in list structures.</p>
+<pre><code>+-------------------+    +-------------------+
+| EquationList      |    | EquationList      |
++-------------------+    +-------------------+
+| equation: "1 + 2" |    | equation: "3 * 4" |
+| result:   3       |    | result:   12      |
+| next:     --------+---&gt;| next:     null    |
++-------------------+    +-------------------+
+</code></pre>
+<p>Write the function below, and then think about which (if any) methods you need to modify in order to properly store your history.</p>
+<pre><code>public void saveEquation(String equation, int result) {
+    /** YOUR CODE HERE **/
+}
+</code></pre>
+<p>We also want to be able to remove the most recent equation we saved to our history.</p>
+<pre><code>public void undoEquation() {
+   /** YOUR CODE HERE **/
+}
+</code></pre>
+<p>Finally, write the following method to allow us to clear our history.</p>
+<pre><code>public void clearHistory() {
+  /** YOUR CODE HERE **/
+}
+</code></pre>
+<h2>Task 5: Operating on Calculator History</h2>
+<p>Note: It is advisable to read the details under Task 6 to get a better picture of the calculator's functionality.</p>
+<p>It's one thing to store history, quite another to actually access it.  This method should print the history of equations that have been entered, along with the result, with the most recent equation first.  Print one equation (along with its result) on each line.  Note that only equations should be stored; do not store other commands such as "sum", "history", etc.</p>
+<p>Here is an example run:</p>
+<pre><code>&gt; 1 + 2
+3
+&gt; 3 * 4
+12
+&gt; history 1
+3 * 4 = 12
+&gt; history
+3 * 4 = 12
+1 + 2 = 3
+</code></pre>
+<p>Notice the optional integer n that is provided; this integer represents the maximum number of entries to return.  If n is specified, print the n most recent equations.  Otherwise, print all entries in history.  To that end, implement the methods below to reflect this behavior.</p>
+<p>Hint: One of these methods is a special case of the other.  Can you write that method without copying-and-pasting your code?</p>
+<pre><code>public void printHistory(int n) {
+    /** YOUR CODE HERE **/
+}
+
+public void printAllHistory() {
+    /** YOUR CODE HERE **/
+}
+</code></pre>
+<p>We also want to be able to compute a sum over the result of each equation in our history.   Implement the following method using a recursive approach:</p>
+<pre><code>public int cumulativeSum() {
+    /** YOUR CODE HERE **/
+}
+</code></pre>
+<p>Likewise, implement a method to compute the product over the result of each equation in our history, but this time, use an iterative approach:</p>
+<pre><code>public int cumulativeProduct() {
+    /** YOUR CODE HERE **/
+}
+</code></pre>
+<h2>Task 6: Reading User Input</h2>
+<p>You will implement the following method:</p>
+<pre><code>public void runCalculator() {
+    while (true) {
+        /** YOUR CODE HERE **/
+    }
+}
+</code></pre>
+<p>This method should prompt the user with a &gt; symbol to enter a command and respond as follows:</p>
+<p><strong>history <em>[n]</em> </strong></p>
+<p>Prints up to n entries from equation history, along with the result, most recent equation first.  n is an optional argument; if not provided, print all entries.  Print each entry on its own line, separated by an equals sign as shown below.  Note that only equations should be stored; do not store other commands such as "sum", "history", etc.</p>
+<p>Example run:</p>
+<pre><code>&gt; 1 + 2
+3
+&gt; 3 * 4
+12
+&gt; history 1
+3 * 4 = 12
+&gt; history
+3 * 4 = 12
+1 + 2 = 3
+</code></pre>
+<p><strong>sum</strong></p>
+<p>Computes a sum over the result of each equation in history.</p>
+<p>For example, if we again have 1 + 2 and 3 * 4 in our history, you should output:  (this is computed as (1 + 2) + (3 * 4))</p>
+<pre><code>&gt; sum
+15
+</code></pre>
+<p><strong>product</strong></p>
+<p>Computes a product over the result of each equation in history.  Using the same example as before, you should output:  (computed as (1 + 2) * (3 * 4))</p>
+<pre><code>&gt; product
+36
+</code></pre>
+<p><strong>clear</strong></p>
+<p>Clears all entries in history.  Subsequent runs of history should not print anything to the terminal, since every entry in history has been removed.</p>
+<p><strong>undo</strong></p>
+<p>Removes the most recently entered equation from history.  All other entries in history should remain unchanged.</p>
+<p><strong>quit</strong></p>
+<p>Exits the calculator.  This means that you should not prompt the user for more input.</p>
+<p><strong> <em>a</em> + <em>b</em> </strong></p>
+<p>Adds a and b together.  Note that this expression is entered in by the user as a String.  You will need to find some way of extracting out the integer corresponding to a and b.  For simplicity, you may assume that there will always be exactly one space between a, +, and b.  You may also assume that there will be no space between a negative sign and the corresponding integer.</p>
+<p>For example:</p>
+<pre><code>1 + - 2  // Invalid expression.  (Space between - and 2)
+1 + -2   // Valid expression.
+1 + --2  // Invalid expression.  (We will not allow double negative signs)
+</code></pre>
+<p><strong> <em>a</em> * <em>b</em> </strong></p>
+<p>Like above, but multiplies <em>a</em> and <em>b</em> together.</p>
+<h2>Extras for Experts</h2>
+<ol>
+<li>
+<p>"Bulletproof" your calculator.  Assume that the TA grading your program will attempt to run malformed input - for instance, "1 + " (which is invalid because it's missing the second argument), or insert extra spaces to confuse the calculator - for instance, "   history"  or "1    + 2".  Make sure that your calculator gracefully rejects the first case, and accurately handles the second case.  You may continue to assume that there will be no spaces separating a negative sign with the corresponding integer.</p>
+</li>
+<li>
+<p>Implement an adder to add two floats using only bit operations.  Please implement this as a separate function with following method signature:  (You do not need to save these equations to history.  That will require you to modify quite a bit more code.)</p>
+</li>
+</ol>
+<p>.</p>
+<pre><code>public float addFloats(float x, float y) {
+    /** YOUR CODE HERE **/
+}
+</code></pre>

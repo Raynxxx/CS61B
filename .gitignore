@@ -1,13 +1,7 @@
 *.class
 *.zip
-*.png
-*.bmp
-*.jpg
 *.bz2
 *.tar
-*.gif
-*.html
-*.css
 *.csv
 javadocs
 
@@ -26,4 +20,5 @@ synsets1000-subgraph.txt
 .Trashes
 ehthumbs.db
 Thumbs.db
+*.java.swp
 

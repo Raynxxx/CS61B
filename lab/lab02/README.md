@@ -1,5 +1,4 @@
-~ number: 2
-~ title: Unit Testing with JUnit and IntLists
+# Lab 2: Unit Testing with JUnit and IntLists
 
 Navigation
 ----------------
