@@ -2,6 +2,7 @@ import list.EquationList;
 
 public class Calculator {
     // YOU MAY WISH TO ADD SOME FIELDS
+    public EquationList head;
 
     /**
      * TASK 2: ADDING WITH BIT OPERATIONS
@@ -13,7 +14,13 @@ public class Calculator {
      **/
     public int add(int x, int y) {
         // YOUR CODE HERE
-        return -1;
+        int sum = 0;
+        while (y != 0) {
+            sum = x ^ y;
+            y = (x & y) << 1;
+            x = sum;
+        }
+        return sum;
     }
 
     /**
@@ -26,7 +33,20 @@ public class Calculator {
      **/
     public int multiply(int x, int y) {
         // YOUR CODE HERE
-        return -1;
+        int sum = 0;
+        boolean neg = false;
+        if (y < 0) {
+            y = -y;
+            neg = true;
+        }
+        while (y != 0) {
+            if ((y & 1) != 0) {
+                sum = add(sum, x);
+            }
+            x = x << 1;
+            y = y >> 1;
+        }
+        return neg ? -sum : sum;
     }
 
     /**
@@ -40,6 +60,7 @@ public class Calculator {
      **/
     public void saveEquation(String equation, int result) {
         // YOUR CODE HERE
+        EquationList cur = new EquationList(equation, result, null);
     }
 
     /**

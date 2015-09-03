@@ -1,29 +1,29 @@
 
 public class DoubleChain {
-	
-	private DNode head;
-	
-	public DoubleChain(double val) {
-		/* your code here. */
-		head = new DNode(val); 
-	}
+    
+    private DNode head;
+    
+    public DoubleChain(double val) {
+        /* your code here. */
+        head = new DNode(val); 
+    }
 
-	public DNode getFront() {
-		return head;
-	}
+    public DNode getFront() {
+        return head;
+    }
 
-	/** Returns the last item in the DoubleChain. */		
-	public DNode getBack() {
-		/* your code here */
+    /** Returns the last item in the DoubleChain. */        
+    public DNode getBack() {
+        /* your code here */
         if (head.prev == null) {
             return head;
         }
-		return head.prev;
-	}
-	
-	/** Adds D to the front of the DoubleChain. */	
-	public void insertFront(double d) {
-		/* your code here */
+        return head.prev;
+    }
+    
+    /** Adds D to the front of the DoubleChain. */  
+    public void insertFront(double d) {
+        /* your code here */
         if (head.prev == null && head.next == null) {
             DNode cur = new DNode(head, d, head);
             head.next = cur;
@@ -36,11 +36,11 @@ public class DoubleChain {
             head.prev = cur;
             head = cur;
         }
-	}
-	
-	/** Adds D to the back of the DoubleChain. */	
-	public void insertBack(double d) {
-		/* your code here */
+    }
+    
+    /** Adds D to the back of the DoubleChain. */   
+    public void insertBack(double d) {
+        /* your code here */
         if (head.prev == null && head.next == null) {
             DNode cur = new DNode(head, d, head);
             head.next = cur;
@@ -51,12 +51,12 @@ public class DoubleChain {
             back.next = cur;
             head.prev = cur;
         }
-	}
-	
-	/** Removes the last item in the DoubleChain and returns it. 
-	  * This is an extra challenge problem. */
-	public DNode deleteBack() {
-		/* your code here */
+    }
+    
+    /** Removes the last item in the DoubleChain and returns it. 
+      * This is an extra challenge problem. */
+    public DNode deleteBack() {
+        /* your code here */
         DNode back = null;
         if (head.prev == null) {
             back = head;
@@ -71,12 +71,12 @@ public class DoubleChain {
             head.prev = back.prev;
         }
         return back;
-	}
-	
-	/** Returns a string representation of the DoubleChain. 
-	  * This is an extra challenge problem. */
-	public String toString() {
-		/* your code here */		
+    }
+    
+    /** Returns a string representation of the DoubleChain. 
+      * This is an extra challenge problem. */
+    public String toString() {
+        /* your code here */        
         String ret = "<[";
         DNode process = head;
         while (process != head.prev) {
@@ -84,23 +84,23 @@ public class DoubleChain {
             process = process.next;
         }
         ret += process.val + "]>";
-		return ret;
-	}
+        return ret;
+    }
 
-	public static class DNode {
-		public DNode prev;
-		public DNode next;
-		public double val;
-		
-		private DNode(double val) {
-			this(null, val, null);
-		}
-		
-		private DNode(DNode prev, double val, DNode next) {
-			this.prev = prev;
-			this.val = val;
-			this.next =next;
-		}
-	}
-	
+    public static class DNode {
+        public DNode prev;
+        public DNode next;
+        public double val;
+        
+        private DNode(double val) {
+            this(null, val, null);
+        }
+        
+        private DNode(DNode prev, double val, DNode next) {
+            this.prev = prev;
+            this.val = val;
+            this.next =next;
+        }
+    }
+    
 }
