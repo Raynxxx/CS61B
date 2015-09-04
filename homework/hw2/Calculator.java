@@ -60,7 +60,7 @@ public class Calculator {
      **/
     public void saveEquation(String equation, int result) {
         // YOUR CODE HERE
-        EquationList cur = new EquationList(equation, result, null);
+        head = new EquationList(equation, result, head);
     }
 
     /**
@@ -72,6 +72,11 @@ public class Calculator {
      **/
     public void printAllHistory() {
         // YOUR CODE HERE
+        EquationList cur = head;
+        while (cur != null) {
+            System.out.println(cur.equation + " = " + cur.result);
+            cur = cur.next;
+        }
     }
 
     /**
@@ -83,6 +88,13 @@ public class Calculator {
      **/
     public void printHistory(int n) {
         // YOUR CODE HERE
+        int i = 0;
+        EquationList cur = head;
+        while (cur != null && i < n) {
+            System.out.println(cur.equation + " = " + cur.result);
+            cur = cur.next;
+            i += 1;
+        }
     }    
 
     /**
@@ -91,6 +103,9 @@ public class Calculator {
     **/
     public void undoEquation() {
         // YOUR CODE HERE
+        if (head != null) {
+            head = head.next;
+        }
     }
 
     /**
@@ -99,6 +114,7 @@ public class Calculator {
      **/
     public void clearHistory() {
         // YOUR CODE HERE
+        head = null;
     }
 
     /**
@@ -109,7 +125,13 @@ public class Calculator {
      **/
     public int cumulativeSum() {
         // YOUR CODE HERE
-        return -1;
+        int sum = 0;
+        EquationList cur = head;
+        while (cur != null) {
+            sum += cur.result;
+            cur = cur.next;
+        }
+        return sum;
     }
 
     /**
@@ -120,6 +142,12 @@ public class Calculator {
      **/
     public int cumulativeProduct() {
         // YOUR CODE HERE
-        return -1;
+        int product = 1;
+        EquationList cur = head;
+        while (cur != null) {
+            product *= cur.result;
+            cur = cur.next;
+        }
+        return product;
     }
 }

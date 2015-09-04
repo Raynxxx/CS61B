@@ -3,6 +3,7 @@
 *.bz2
 *.tar
 *.csv
+*.gitkeep
 javadocs
 
 # Proj1 files that we REALLY don't want them to upload! #
