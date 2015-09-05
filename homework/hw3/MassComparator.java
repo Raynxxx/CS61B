@@ -13,5 +13,6 @@ public class MassComparator implements Comparator<Planet> {
      *  Round after calculating the difference. */
     public int compare(Planet planet1, Planet planet2) {
         // REPLACE THIS LINE WITH YOUR SOLUTION
+        return (int) (planet1.getMass() - planet2.getMass());
     }
 }

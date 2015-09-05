@@ -1,0 +1,19 @@
+Q1.
+(a) SuperAnimal 
+(b) No
+(c) Ringding
+(d) Yes
+(e) None
+(f) dynamic
+
+Q2.
+(a) A 
+(b) Ringding
+(c) Ringding
+(d) dynamic
+
+Q3.
+(a) True 
+(b) SuperAnimal
+(c) SuperAnimal
+(d) static

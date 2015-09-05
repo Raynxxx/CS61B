@@ -1,9 +1,9 @@
-~ number: 3
-~ title: Object-Oriented Programming
+# Homework 3: Object-Oriented Programming
 
 This homework is intended to reinforce various OOP concepts and give you more practice with linked lists before the midterm. Parts 2, 3, and 4 will cover material up through Friday's (Feb 13th) lecture. 
 
-The solutions are available at [this link](../sol/hw3sol.zip). The password on the zip file is "skeleton master". You can literally submit exactly the files in this hw if you wish, though I don't recommend it since you won't learn anything.
+The solutions are available at [this link](https://berkeley-cs61b.github.io/public_html/materials/hw/sol/hw3sol.zip). The password on the zip file is "skeleton master". You can literally submit exactly the files in this hw if you wish, though I don't recommend it since you won't learn anything.
+
 
 Part 1: Basic inheritance exercises
 ----
