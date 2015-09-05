@@ -3,15 +3,35 @@
  * Created by rayn on 2015-9-4.
  */
 public class Board {
-    private static int N = 8;
-    private static Piece[][] pieces;
-    private static int player = 0;
-    private Piece selectedPiece;
-    private Piece hasCaptured;
-    private boolean hasMoved;
+    public static int N = 8;
+    public static Piece[][] pieces;
+    public static int player = 0;
+    public Piece selectedPiece;
+    public Piece hasCaptured;
+    public boolean hasMoved;
 
     public static void main(String[] args) {
         Board b = new Board(false);
+        StdDrawPlus.setXscale(0, N);
+        StdDrawPlus.setYscale(0, N);
+        while (true) {
+            Board.drawBoard(N);
+            while (!b.canEndTurn()) {
+                if (StdDrawPlus.mousePressed()) {
+                    int x = (int) StdDrawPlus.mouseX();
+                    int y = (int) StdDrawPlus.mouseY();
+                    System.out.println("pressed (" + x + ", " + y + ").");
+                    if (b.canSelect(x, y)) {
+                        b.select(x, y);
+                        System.out.println("select (" + x + ", " + y + ").");
+                    }
+                }
+                StdDrawPlus.show(100);
+            }
+            b.endTurn();
+            System.out.println("end turn");
+            StdDrawPlus.show(100);
+        }
     }
 
     public Board(boolean shouldBeEmpty) {
@@ -77,8 +97,7 @@ public class Board {
         if (!inBound(x, y)) return false;
         Piece curPiece = pieceAt(x, y);
         if (curPiece != null && curPiece.side() == player) {
-            if (selectedPiece == null ||
-                    (selectedPiece != null && !hasMoved)) {
+            if (selectedPiece == null || !hasMoved) {
                 return true;
             }
         } else if (curPiece == null) {
@@ -130,5 +149,26 @@ public class Board {
     }
     public String winner() {
         return null;
+    }
+
+    /**
+     * Draws an N x N board.
+     */
+    private static void drawBoard(int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if ((i + j) % 2 == 0) {
+                    StdDrawPlus.setPenColor(StdDrawPlus.GRAY);
+                } else {
+                    StdDrawPlus.setPenColor(StdDrawPlus.RED);
+                }
+                StdDrawPlus.filledSquare(i + 0.5, j + 0.5, 0.5);
+                StdDrawPlus.setPenColor(StdDrawPlus.WHITE);
+                if (pieces[i][j] != null) {
+                    StdDrawPlus.picture(i + 0.5, j + 0.5,
+                            pieces[i][j].imgPath(), 1, 1);
+                }
+            }
+        }
     }
 }

@@ -1,3 +1,5 @@
+import java.io.File;
+
 /**
  * Piece
  * Created by rayn on 2015-9-4.
@@ -26,6 +28,10 @@ public class Piece {
     public int getY() {
         return y;
     }
+    public String getType() {
+        return type;
+    }
+
     public boolean isFire() {
         return isFire;
     }
@@ -42,12 +48,24 @@ public class Piece {
         return type.equals("shield");
     }
     public void move(int x, int y) {
-
+        if (board.hasCaptured != null) {
+            board.remove(board.hasCaptured.x, board.hasCaptured.y);
+        }
+        board.pieces[x][y] = board.remove(this.x, this.y);
+        this.x = x;
+        this.y = y;
+        board.hasMoved = true;
     }
     public boolean hasCaptured() {
         return hasCaptured;
     }
     public void doneCapturing() {
         hasCaptured = true;
+    }
+    public String imgPath() {
+        String ret = "img" + File.separatorChar + this.type;
+        ret += this.isFire() ? "-fire" : "-water";
+        ret += this.isKing() ? "-crowned.png" : ".png";
+        return ret;
     }
 }
