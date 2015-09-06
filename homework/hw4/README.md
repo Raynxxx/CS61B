@@ -1,5 +1,4 @@
-~ number: 4
-~ title: Packages, Abstract Classes, Interfaces
+# Homework 4: Packages, Abstract Classes, Interfaces
 
 Table of Contents
 ----------------
@@ -185,7 +184,7 @@ The Karplus-Algorithm is simply the following three steps:
 
 Or visually, if the BoundedQueue is as shown on the top, we'd dequeue the 0.2, combine it with the 0.4 to form 0.2988, enqueue the 0.2988, and play the 0.2.
 
-![karplus-strong](karplus-strong.png)
+![karplus-strong](spec/karplus-strong.png)
 
 You can play a double value with the StdAudio.play() method. For example StdAudio.play(0.333) will tell the diaphragm of your speaker to extend itself to 1/3rd of its total reach, StdAudio.play(-0.9) will tell it to stretch its little heart backwards almost as far as it can reach. Movement of the speaker diaphragm displaces air, and if you displace air in nice patterns, these disruptions will be intepreted by your consciousness as pleasing thanks to billions of years of evolution. See [this page](http://electronics.howstuffworks.com/speaker6.htm) for more. If you simply do StdAudio.play(0.9) and never play anything again, the diaphragm shown in the image would just be sitting still 9/10ths of the way forwards.
 
