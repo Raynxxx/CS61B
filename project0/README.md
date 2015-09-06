@@ -125,11 +125,11 @@ Make your method calls consistent. Calling canSelect on the same piece multiple 
 
 We have provided a staff solution for you to get a feel for the rules. In order to run this, you should first ensure that your `skeleton` repo is up-to-date and on your CLASSPATH, as taught in lab 1c. (You may update your skeleton by calling `git pull origin master` from within the folder. You want to make sure you have a `skeleton/lib/staffp0_obf.jar` file). You should also ensure that you are in a directory that is parallel with an `img/` directory (if you `ls`, you can see `img/`) so that the program can use the images of the pieces. This may be either from skeleton, or even better, inside your own `aaa/proj0/` folder. From a correct directory, run the staff solution by using:
 
-`java staffp0.StaffBoard`
+    java staffp0.StaffBoard
 
 If you get a "Could not find or load...", your CLASSPATH is probably set up incorrectly. You should fix that. Inappropriately, a temporary workaround is to manually include the `staffp0_obf.jar` in your class path. Assuming both `img/` and `staffp0_obf.jar` are visible in an `ls` command, run:
 
-`java &#x2d;cp staffp0_obf.jar staffp0.StaffBoard`
+    java -cp staffp0_obf.jar staffp0.StaffBoard
 
 #### Recommended order of tasks / Checkpoints:
 

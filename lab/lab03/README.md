@@ -55,7 +55,7 @@ Today, we'll give you a quick walkthrough on how to use gjdb or Eclipse then thr
 
 For a quick gjdb usage video (doing the first part of this lab), see [this link](http://youtu.be/ihMUS-MhNwA).
 
-You can use gjdb either from the command line or using Emacs. If you're using your own computer and haven't completed [lab 1d](../lab1d/lab1d.html), you should log into the instructional machines for this part.
+You can use gjdb either from the command line or using Emacs. If you're using your own computer and haven't completed [lab 1d](https://berkeley-cs61b.github.io/public_html/materials/lab/lab1d/lab1d.html), you should log into the instructional machines for this part.
 
 For gjdb to work, it's important that your java files are compiled using the -g option, e.g.
 
@@ -69,7 +69,7 @@ To run gjdb from the command line on your own computer, type:
 java ucb.gjdb.GJDB Hopper
 ```
 
-See [lab 1d](../lab1d/lab1d.html) if this command does not work.
+See [lab 1d](https://berkeley-cs61b.github.io/public_html/materials/lab/lab1d/lab1d.html) if this command does not work.
 
 Or if on a lab computer, type:
 
