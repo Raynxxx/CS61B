@@ -14,7 +14,13 @@ public class ArrayList61BTest {
         L.add(10);
         assertTrue(L.contains(5));        
         assertFalse(L.contains(0));
+        assertEquals(2, L.size());
 
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testConstructor() {
+        List<Integer> L = new ArrayList61B<Integer>(-1);
     }
 
     /** Runs tests. */

@@ -1,23 +1,23 @@
-/** A linked list class that stores items of type Object. */
-public class ObjectList {
+/** A linked list class that stores items of type Generic Type. */
+public class GenericList<Rayn> {
 
     /** Inner class used to represent a single node in this linked list. */
     private class Node {
         
         /** Constructs a new Node with head VALUE and a null tail. */
-        public Node(Object value) {
+        public Node(Rayn value) {
             this(value, null);
         }
 
         /** Constructs a new Node with head VALUE and tail NEXT. */
-        public Node(Object value, Node next) {
+        public Node(Rayn value, Node next) {
             this.value = value;
             this.next = next;
         }
 
         /** Returns the element at index i starting at this node in
          *  the linked list. */
-        public Object get(int i) {
+        public Rayn get(int i) {
             if (i == 0) return value;
             if (next == null) {
                 throw new IllegalArgumentException("Index out of bounds");
@@ -27,7 +27,7 @@ public class ObjectList {
         }
 
         /** The value stored in this node */
-        Object value;
+        Rayn value;
         /** The next node in the list */
         Node next;
     }
@@ -56,7 +56,7 @@ public class ObjectList {
 
     /** Returns ith element of this list, throwing an exception if it
      *  does not exist. */
-    public Object get(int i) {
+    public Rayn get(int i) {
         if (head == null) {
             throw new IllegalArgumentException("Index out of bounds");
         }
@@ -64,7 +64,7 @@ public class ObjectList {
     }
 
     /** Inserts VAL into the front of this list. */
-    public void insert(Object val) {
+    public void insert(Rayn val) {
         head = new Node(val, head);
         length += 1;
     }

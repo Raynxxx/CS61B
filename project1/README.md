@@ -1,5 +1,4 @@
-~ number: 1
-~ title: NGordNet
+# Project 1: NGordNet
 
 As this is a totally new project, there may be occasional bugs. Please contact Josh directly with any anomalies that you observe: hug@cs.berkeley.edu.
 
@@ -48,7 +47,7 @@ Your ultimate goal in building the WordNet class is to read input files and stor
 
 [WordNet](http://en.wikipedia.org/wiki/WordNet) is a semantic lexicon for the English language that is used extensively by computational linguists and cognitive scientists; for example, it was a key component in IBM's Watson. WordNet groups words into sets of synonyms called synsets and describes semantic relationships between them. One such relationship is the is-a relationship, which connects a hyponym (more specific synset) to a hypernym (more general synset). For example, "change" is a **hypernym** of "demotion", since "demotion" is-a (type of) "change". "change" is in turn a **hyponym** of "action", since "change" is-a (type of) "action". A visual depiction of some hyponym relationships in English is given below:
 
-![WordNet](wordnet-fig1.png "WordNet")
+![WordNet](spec/wordnet-fig1.png "WordNet")
 
 Synsets consist of one or more words in English that all have the same meaning. For example, one synset is ["jump, parachuting"](http://wordnetweb.princeton.edu/perl/webwn?o2=&o0=1&o8=1&o1=1&o7=&o5=&o9=&o6=&o3=&o4=&s=jump&i=6&h=000010000000000000000000#c), which represents the act of descending to the ground with a parachute. "jump, parachuting" is a hyponym of "descent", since "jump, parachuting" is-a "descent". 
 
@@ -67,7 +66,7 @@ To store the WordNet dataset, you'll need to use at least two data structures. O
 
 A small subgraph of the WordNet Digraph is illustrated below. In our copy of the dataset (and in the graph below), words that belong to the same synset are separated by spaces (not commas as in the figure above), and collocations use underscores instead of spaces (e.g. "car\_pool" instead of "car pool", same as the figure above). 
 
-![WordNet](wordnet-fig2.png "WordNet")
+![WordNet](spec/wordnet-fig2.png "WordNet")
 
 A graph consists of a set of V vertices and E edges (represented by arrows in the above figure) between vertices. For example, in the graph above, V = 23 and E = 23. One of these edges is from "increase" to "jump leap", indicating that the synset "increase" is a hypernym of "jump leap". 
 
@@ -306,9 +305,9 @@ For example, after the following commands, the following outputs should be print
     > range 1900 2000
     > hypohist dog cat
 
-![cake.png](cake.png)
-![cake-pie.png](cake-pie.png)
-![dog-cat.png](dog-cat.png)
+![cake.png](spec/cake.png)
+![cake-pie.png](spec/cake-pie.png)
+![dog-cat.png](spec/dog-cat.png)
 
 Lines that do not match these patterns should be ignored. Invalid inputs should not cause the program to crash, but you may print out helpful messages to the user if you'd like.
 

@@ -1,5 +1,4 @@
-~ number: 5
-~ title: Generics
+# Homework 5: Generics
 
 Important note about this homework: One of the main difficulties of this homework is getting the syntax right and in particular having the right signatures for classes and methods. You should be able to compile all of your files (except for ArrayList61B.java) without getting any compiler warnings. If you get any warnings, you should try to figure out what is causing them and edit your code so that you no longer get any. Do not ignore the warnings: While you will still be able to compile and run your code with warnings, it probably means you are doing something wrong.
 
