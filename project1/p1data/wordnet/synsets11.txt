@@ -1,0 +1,11 @@
+0,action,dummy
+1,change,dummy
+2,demotion,dummy
+3,descent,dummy
+4,jump parachuting,dummy
+5,increase,dummy
+6,jump leap,dummy
+7,augmentation,dummy
+8,antihistamine,dummy
+9,nasal_decongestant,dummy
+10,actifed,dummy

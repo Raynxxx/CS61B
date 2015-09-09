@@ -1,3 +1,4 @@
+package demos;
 /** An object that stores word counts of all words in a single year. Provides
  *  utility methods useful for data analysis.
  *  @author Josh Hug

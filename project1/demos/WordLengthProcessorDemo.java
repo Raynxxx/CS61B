@@ -1,3 +1,4 @@
+package demos;
 import ngordnet.WordLengthProcessor;
 import ngordnet.YearlyRecord;
 

@@ -1,4 +1,5 @@
-/*  If you were to include ExampleUI in a package, you'd need to do the following 
+package demos;
+/*  If you were to include ExampleUI in a package, you'd need to do the following
     import statement:
 
     import edu.princeton.cs.introcs.StdIn;
@@ -10,6 +11,9 @@
     See lecture 17 for more (3/2) details. But basically if you don't have 
     this import, and things aren't working, you should add this import.
 */
+
+import edu.princeton.cs.introcs.In;
+import edu.princeton.cs.introcs.StdIn;
 
 /** An example of a UI.
  *  @author Josh Hug

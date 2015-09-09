@@ -1,3 +1,4 @@
+package demos;
 /** Provides examples of using the NGramMap class.
  *  @author Josh Hug
  */

@@ -1,17 +1,11 @@
 *.class
 .idea/
+out/
 *.zip
 *.bz2
 *.tar
-*.csv
 *.gitkeep
 javadocs
-
-# Proj1 files that we REALLY don't want them to upload! #
-synsets.txt
-hypernyms.txt
-hyponyms1000-subgraph.txt
-synsets1000-subgraph.txt
 
 # OS generated files #
 ######################

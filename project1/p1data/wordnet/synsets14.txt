@@ -1,0 +1,14 @@
+0,event,dummy
+1,happening occurrence occurrent natural_event,dummy
+2,change alteration modification,dummy
+3,transition,dummy
+4,increase,dummy
+5,jump leap saltation,dummy
+6,act human_action human_activity,dummy
+7,action,dummy
+8,change,dummy
+9,demotion,dummy
+10,variation,dummy
+11,alteration modification adjustment,dummy
+12,conversion,dummy
+13,mutation,dummy
