@@ -1,6 +1,7 @@
 *.class
 .idea/
 out/
+p1data/
 *.zip
 *.bz2
 *.tar
