@@ -12,8 +12,8 @@ public class WordNetTest {
 
     @Test
     public void testBasic() {
-        WordNet wn = new WordNet("p1data/wordnet/synsets11.txt",
-                "p1data/wordnet/hyponyms11.txt");
+        WordNet wn = new WordNet("./p1data/wordnet/synsets11.txt",
+                "./p1data/wordnet/hyponyms11.txt");
         assertTrue(wn.isNoun("jump"));
         assertTrue(wn.isNoun("leap"));
         assertTrue(wn.isNoun("nasal_decongestant"));

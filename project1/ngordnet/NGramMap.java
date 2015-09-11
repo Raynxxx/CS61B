@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 /**
  * NGramMap
- * Created by rayn on 15-9-9.
+ * Created by rayn on 2015-9-9.
  */
 public class NGramMap {
 

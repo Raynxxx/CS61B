@@ -32,8 +32,7 @@ public class ExampleUI {
                 case "quit": 
                     return;
                 case "help":
-                    In in = new In("help.txt");
-                    String helpStr = in.readAll();
+                    String helpStr = new In("help.txt").readAll();
                     System.out.println(helpStr);
                     break;  
                 case "range": 

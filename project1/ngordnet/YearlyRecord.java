@@ -57,12 +57,12 @@ public class YearlyRecord {
 
     /** Returns all words in ascending order of count. */
     public Collection<String> words() {
-        return new TreeSet<String>(recordCount.keySet());
+        return records.descendingKeySet();
     }
 
     /** Returns all counts in ascending order of count. */
     public Collection<Number> counts() {
-        return new TreeSet<Number>(recordCount.values());
+        return new TreeSet<Number>(records.values());
     }
 
     /** Returns rank of WORD. Most common word is rank 1.

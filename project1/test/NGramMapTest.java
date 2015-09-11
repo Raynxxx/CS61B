@@ -17,8 +17,8 @@ public class NGramMapTest {
 
     @Test
     public void testBasic() {
-        NGramMap ngm = new NGramMap("p1data/ngrams/words_that_start_with_q.csv",
-                                    "p1data/ngrams/total_counts.csv");
+        NGramMap ngm = new NGramMap("./p1data/ngrams/words_that_start_with_q.csv",
+                                    "./p1data/ngrams/total_counts.csv");
         assertEquals(139, ngm.countInYear("quantity", 1736));
         YearlyRecord yr = ngm.getRecord(1736);
         assertEquals(139, yr.count("quantity"));

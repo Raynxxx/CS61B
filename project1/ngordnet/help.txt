@@ -1,0 +1,7 @@
+quit:                   program exits
+help:                   Provides a list of commands.
+range [start] [end]:    resets the start and end years to the values provided.affects only future plots, not existing plots.
+count [word] [year]:    print the count of word in the given year.
+hyponyms [word]:        prints all hyponyms of the given word using the default Set string representation (see below).
+history [words...]:     plots relative frequency of all words from start to end.
+hypohist [words...]:    plots relative frequency of all hyponyms of wordsfrom start to end.
