@@ -18,9 +18,12 @@ public class NgordnetUI {
         System.out.println("\nBased on ngordnetui.config, using the following: \n"
                            + wordFile + "\n" + countFile + "\n" + synsetFile +
                            "\n" + hyponymFile);
+
         NGramMap nGramMap = new NGramMap(wordFile, countFile);
         WordNet wordNet = new WordNet(synsetFile, hyponymFile);
-        int startDate = 1505, endDate = 2008;
+        YearlyRecordProcessor yrp = new WordLengthProcessor();
+
+        int startDate = 0, endDate = Integer.MAX_VALUE;
         while (true) {
             System.out.print("> ");
             String line = StdIn.readLine();
@@ -54,6 +57,12 @@ public class NgordnetUI {
                     break;
                 case "hypohist":
                     Plotter.plotCategoryWeights(nGramMap, wordNet, tokens, startDate, endDate);
+                    break;
+                case "wordlength":
+                    Plotter.plotProcessedHistory(nGramMap, startDate, endDate, yrp);
+                    break;
+                case "zipf":
+                    Plotter.plotZipfsLaw(nGramMap, Integer.parseInt(tokens[0]));
                     break;
                 default:
                     System.out.println("Invalid command.");

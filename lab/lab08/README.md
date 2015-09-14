@@ -1,5 +1,4 @@
-~ number: 8
-~ title: Asymptotics
+# Lab 8: Asymptotics
 
 1: Experimentally determining running times
 --------

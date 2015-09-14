@@ -5,3 +5,5 @@ count [word] [year]:    print the count of word in the given year.
 hyponyms [word]:        prints all hyponyms of the given word using the default Set string representation (see below).
 history [words...]:     plots relative frequency of all words from start to end.
 hypohist [words...]:    plots relative frequency of all hyponyms of wordsfrom start to end.
+wordlength:             plots the length of the average word from start to end.
+zipf [year]:            plots the count (or weight) of every word vs. its rank on a log log plot.

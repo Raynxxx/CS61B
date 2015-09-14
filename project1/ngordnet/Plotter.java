@@ -42,7 +42,9 @@ public class Plotter {
      * NGM as a data source, and the YRP as a yearly record processor. */
     public static void plotProcessedHistory(NGramMap ngm, int startYear, int endYear,
                                             YearlyRecordProcessor yrp) {
-
+        TimeSeries<Double> ts = ngm.processedHistory(startYear, endYear, yrp);
+        Plotter.plotTS(ts, "Length of Average Word vs. Year", "Year",
+                "Length of Average Word", "Length of Average Word");
     }
 
     /** Creates a plot of the total normalized count of WN.hyponyms(CATEGORYLABEL)
@@ -104,6 +106,16 @@ public class Plotter {
     /** Plots the count (or weight) of every word against the rank of every word on a
      * log-log plot. Uses data from YEAR, using NGM as a data source. */
     public static void plotZipfsLaw(NGramMap ngm, int year) {
+        YearlyRecord yr = ngm.getRecord(year);
+        Collection<Number> yearCounts = yr.counts();
+        Collection<Number> yearRank = downRange(yearCounts.size());
 
+        Chart chart = new ChartBuilder()
+                .width(800).height(600)
+                .xAxisTitle("Rank").yAxisTitle("Count").build();
+        chart.getStyleManager().setYAxisLogarithmic(true);
+        chart.getStyleManager().setXAxisLogarithmic(true);
+        chart.addSeries("Zipf's Law", yearRank, yearCounts);
+        new SwingWrapper(chart).displayChart();
     }
 }
