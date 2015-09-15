@@ -1,5 +1,4 @@
-~ number: 9
-~ title: Project 2 Lab
+# Lab 9: Project 2 Lab
 
 Overview
 --------

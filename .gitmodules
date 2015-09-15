@@ -1,0 +1,3 @@
+[submodule "project2/gitlet"]
+	path = project2/gitlet
+	url = https://github.com/Raynxxx/Gitlet.git
