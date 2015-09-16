@@ -1,5 +1,4 @@
-~ number: 6
-~ title: Asymptotics and BSTs
+# Homework 6: Asymptotics and BSTs
 
 For this installment of Awesome Asymptotics, you'll create **BSTMap**, a BST-based implementation of the Map61B interface from HW5. 
 
